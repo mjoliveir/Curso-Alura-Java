@@ -1,3 +1,5 @@
+package Exercicios;
+
 public class Condicional {
     public static void main(String[] args) {
         int anoDelancamento = 2022;

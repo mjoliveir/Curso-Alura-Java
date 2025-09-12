@@ -1,4 +1,4 @@
-import org.w3c.dom.ls.LSOutput;
+package Exercicios;
 
 import java.util.Scanner;
 
