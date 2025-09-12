@@ -12,7 +12,7 @@ public class Condicional {
         } else System.out.println("FIlme retrô que vale a pena assistir");
 
         if (incluidoNoPlano && tipoPlano.equals("plus")){
-            System.out.println("br.com.alura.screenmatch.modelos.MainFIlme.Filme liberado");
+            System.out.println("MainFIlme.Filme liberado");
         } else System.out.println("É necessário a locação desse filme");
     }
 }
