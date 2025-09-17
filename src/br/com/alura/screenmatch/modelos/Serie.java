@@ -53,5 +53,10 @@ public class Serie extends Titulo implements Classificavel {
        return (int) getMediaAvaliacoes() /2;
 
         }
+
+    @Override
+    public String toString() {
+        return "\nSerie: " + getNome() + " Data de lançamento: " + getAnoDeLancamento();
+    }
 }
 
