@@ -1,18 +1,51 @@
 package br.com.alura.screenmatch.modelos;
 
+import br.com.alura.screenmatch.Principal.TituloOMDB;
+import br.com.alura.screenmatch.selfException.erroDeConversaoDeAnoException;
+import br.com.alura.screenmatch.selfException.ErroDeTempoDeDuração;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Scanner;
 
 public class Titulo implements  Comparable<Titulo>{
+    @SerializedName("Title")
     private String nome;
+    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
+
+    public Titulo(TituloOMDB meuTituloOMDB) {
+        this.nome = meuTituloOMDB.title();
+        if (meuTituloOMDB.year().length() > 4){
+        throw new erroDeConversaoDeAnoException("Não foi possível converter o ano informado, ele está incorreto");
+        }
+        this.anoDeLancamento = Integer.parseInt(meuTituloOMDB.year());
+        if (meuTituloOMDB.runtime().equalsIgnoreCase("N/A")){
+            this.duracaoEmMinutos = 0;
+        } else if (meuTituloOMDB.runtime().length() == 6) {
+            this.duracaoEmMinutos = Integer.valueOf(meuTituloOMDB.runtime().substring(0, 2));
+        } else if (meuTituloOMDB.runtime().length() == 7){
+            this.duracaoEmMinutos = Integer.valueOf(meuTituloOMDB.runtime().substring(0, 3));
+
+        }
+
+    }
 
     @Override
     public int compareTo(Titulo titulo) {
         return this.getNome().compareTo(titulo.getNome());
     }
 
+    @Override
+    public String toString() {
+        return "Titulo: " + getNome() + "\n" +
+                "Ano de lancaçmento: " + getAnoDeLancamento() + "\n" +
+                "Duração em minutos: " +  getDuracaoEmMinutos() + "Minutos\n";
+    }
+
+    @SerializedName("imdbRating")
     private double avaliacao = 0;
+    @SerializedName("imdbVotes")
     private int totalDeAvaliacao = 0;
     private int duracaoEmMinutos;
 
@@ -87,6 +120,7 @@ public class Titulo implements  Comparable<Titulo>{
     public void setDuracaoEmMinutos(int duracaoEmMinutos) {
         this.duracaoEmMinutos = duracaoEmMinutos;
     }
+
 
 
 }

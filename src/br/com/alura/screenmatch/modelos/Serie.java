@@ -56,7 +56,7 @@ public class Serie extends Titulo implements Classificavel {
 
     @Override
     public String toString() {
-        return "\nSerie: " + getNome() + " Data de lançamento: " + getAnoDeLancamento();
+        return "\n, Serie: " + getNome() + " Data de lançamento: " + getAnoDeLancamento();
     }
 }
 
